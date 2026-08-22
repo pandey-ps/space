@@ -11,9 +11,18 @@ body {
 }
 
 body {
-  background: url("cover.jpeg") center / cover no-repeat fixed;
   font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-tap-highlight-color: transparent;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("cover.jpeg") center / cover no-repeat;
+  height: 100%;
+  width: 100%;
 }
 
 .clock {
