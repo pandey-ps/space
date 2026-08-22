@@ -7,11 +7,13 @@
 html,
 body {
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 body {
   background: url("cover.jpeg") center / cover no-repeat fixed;
   font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .clock {
@@ -90,6 +92,8 @@ body {
   opacity: 1;
 }
 
+/* ---- player ---- */
+
 .player {
   position: fixed;
   bottom: 42px;
@@ -98,8 +102,8 @@ body {
   width: min(560px, calc(100vw - 48px));
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px 20px 16px 14px;
+  gap: 14px;
+  padding: 14px 18px 14px 12px;
   border-radius: 20px;
   background: rgba(15, 18, 22, 0.62);
   backdrop-filter: blur(18px);
@@ -109,9 +113,9 @@ body {
 }
 
 .player-art {
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
   object-fit: cover;
   background: rgba(255, 255, 255, 0.08);
   flex-shrink: 0;
@@ -124,7 +128,7 @@ body {
 }
 
 .player-title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   color: #fff;
   white-space: nowrap;
@@ -133,20 +137,20 @@ body {
 }
 
 .player-artist {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 400;
   opacity: 0.6;
   color: #fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: 7px;
+  margin-bottom: 6px;
 }
 
 .player-seek {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .player-t-cur,
@@ -171,10 +175,20 @@ body {
 .player-bar::-webkit-slider-thumb {
   appearance: none;
   -webkit-appearance: none;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #fff;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.player-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
   opacity: 0;
   transition: opacity 0.15s ease;
 }
@@ -184,18 +198,25 @@ body {
   opacity: 1;
 }
 
+.player-bar:hover::-moz-range-thumb,
+.player-bar:active::-moz-range-thumb {
+  opacity: 1;
+}
+
+/* ---- controls ---- */
+
 .player-controls {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   flex-shrink: 0;
 }
 
 .pc-btn {
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border: none;
   border-radius: 50%;
   background: transparent;
@@ -213,8 +234,8 @@ body {
 }
 
 .pc-btn svg {
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
 }
 
 .pc-shuffle {
@@ -226,8 +247,8 @@ body {
 }
 
 .pc-play {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   background: #fff;
   color: #fff;
   opacity: 1;
@@ -238,8 +259,8 @@ body {
 }
 
 .pc-play svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 .ic-pause {
@@ -264,5 +285,151 @@ body {
   50%,
   100% {
     opacity: 0;
+  }
+}
+
+/* ---- mobile ---- */
+
+@media (max-width: 480px) {
+  .clock {
+    top: 50px;
+    left: 16px;
+    font-size: 16px;
+  }
+
+  .clock-h,
+  .clock-m {
+    font-size: 16px;
+  }
+
+  .clock-colon {
+    font-size: 16px;
+  }
+
+  .clock-ap {
+    font-size: 10px;
+  }
+
+  .spotify {
+    top: 16px;
+    right: 16px;
+    gap: 6px;
+  }
+
+  .spotify-logo {
+    width: 16px;
+    height: 16px;
+  }
+
+  .spotify span {
+    font-size: 12px;
+  }
+
+  .player {
+    bottom: 24px;
+    width: calc(100vw - 24px);
+    gap: 10px;
+    padding: 10px 12px 10px 10px;
+    border-radius: 16px;
+    bottom: max(24px, env(safe-area-inset-bottom, 0px));
+  }
+
+  .player-art {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+  }
+
+  .player-title {
+    font-size: 13px;
+  }
+
+  .player-artist {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .player-seek {
+    gap: 4px;
+  }
+
+  .player-t-cur,
+  .player-t-dur {
+    font-size: 9px;
+    min-width: 20px;
+  }
+
+  .player-controls {
+    gap: 0;
+  }
+
+  .pc-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .pc-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .pc-play {
+    width: 34px;
+    height: 34px;
+  }
+
+  .pc-play svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Always show seek thumb on touch */
+  .player-bar::-webkit-slider-thumb {
+    opacity: 1;
+    width: 14px;
+    height: 14px;
+  }
+
+  .player-bar::-moz-range-thumb {
+    opacity: 1;
+    width: 14px;
+    height: 14px;
+  }
+
+  .player-bar {
+    height: 4px;
+  }
+}
+
+/* Very small screens (iPhone SE, etc.) */
+@media (max-width: 360px) {
+  .player {
+    width: calc(100vw - 16px);
+    padding: 8px 10px 8px 8px;
+    gap: 8px;
+  }
+
+  .player-art {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+  }
+
+  .player-title {
+    font-size: 12px;
+  }
+
+  .player-artist {
+    font-size: 10px;
+  }
+
+  .pc-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .pc-play {
+    width: 32px;
+    height: 32px;
   }
 }
