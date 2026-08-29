@@ -8,4 +8,3 @@ def reduce(embeddings, method="umap"):
     if method == "pca":
         from sklearn.decomposition import PCA
         return PCA(n_components=2).fit_transform(embeddings)
-    raise ValueError(f"unknown method: {method}")
