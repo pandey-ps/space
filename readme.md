@@ -1,5 +1,5 @@
 visual embeddings of multiples images in a scatter plot.
-uses [facebookresearch/dinov2](https://arxiv.org/abs/2212.14936) for embeddings.
+uses [facebookresearch/dinov2](https://arxiv.org/abs/2304.07193) for embeddings.
 
 the input images are passed through the vision transformer to get semantic feature vectors(and are cached).
 
