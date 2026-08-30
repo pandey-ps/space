@@ -4,8 +4,8 @@ from PIL import Image
 from tqdm import tqdm
 from transformers import AutoImageProcessor, AutoModel
 
-MODEL = "facebook/dinov2-small"
-# can change to facebook/dinov2-base, facebook/dinov2-large, facebook/dinov2-giant
+MODEL = "facebook/dinov2-giant"
+# can change to facebook/dinov2-base, facebook/dinov2-large, facebook/dinov2-small
 IMG_EXTS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tiff"}
 
 class Embedder:
