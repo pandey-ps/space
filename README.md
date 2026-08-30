@@ -7,6 +7,14 @@ the embeddings are projected down to 2d coordinates using umap/tsne/pca. (choice
 
 on the very first run, model weights are downloaded and dumped to cache.
 
-visualization of embeddings:
+*visualization of embeddings:*
 
 ![](assets/embeds.png)
+
+#### usage
+
+```bash
+git clone https://github.com/pandey-ps/space.git
+cd space
+uv run python src/app.py
+```
