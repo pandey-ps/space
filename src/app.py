@@ -37,7 +37,7 @@ def extract_inputs(files, folder_files, text_paths):
     return list(dict.fromkeys(dirs))
 
 
-def process(files, folder_files, text_paths, method, force):
+def process(files, folder_files, text_paths, method, force, progress=gr.Progress(track_tqdm=True)):
     folders = extract_inputs(files, folder_files, text_paths)
     if not folders:
         raise gr.Error("upload images/folder or a folder path")
@@ -82,31 +82,14 @@ def process(files, folder_files, text_paths, method, force):
     return fig
 
 
-CSS = """
-#upload_files table, #upload_folder table,
-#upload_files tbody, #upload_folder tbody,
-#upload_files tr, #upload_folder tr,
-#upload_files .file, #upload_folder .file,
-#upload_files .file-name, #upload_folder .file-name,
-#upload_files .file-preview, #upload_folder .file-preview,
-#upload_files [data-testid="file-preview"], #upload_folder [data-testid="file-preview"] {
-    display: none !important;
-}
-#upload_files, #upload_folder {
-    max-height: 120px !important;
-    overflow: hidden !important;
-}
-"""
-
 with gr.Blocks(title="space") as app:
-    gr.HTML(f"<style>{CSS}</style>")
     gr.Markdown("# space\n embeddings")
 
     with gr.Row():
         with gr.Column(scale=2):
             with gr.Row():
-                upload_files = gr.File(label="upload images", file_count="multiple", elem_id="upload_files", height=100)
-                upload_folder = gr.File(label="upload folder", file_count="directory", elem_id="upload_folder", height=100)
+                upload_files = gr.File(label="upload images", file_count="multiple")
+                upload_folder = gr.File(label="upload folder", file_count="directory")
             paths = gr.Textbox(label="or local folder paths (optional)", placeholder="/path/to/folder (one per line)", lines=2)
         with gr.Column(scale=1):
             method = gr.Dropdown(["umap", "tsne", "pca"], value="umap", label="method")
