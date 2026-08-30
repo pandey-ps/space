@@ -6,3 +6,7 @@ the input images are passed through the vision transformer to get semantic featu
 the embeddings are projected down to 2d coordinates using umap/tsne/pca. (choice can be done at the webapp as per number of images).
 
 on the very first run, model weights are downloaded and dumped to cache.
+
+visualization of embeddings:
+
+![](assets/embeds.png)
