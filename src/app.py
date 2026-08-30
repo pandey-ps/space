@@ -101,4 +101,4 @@ with gr.Blocks(title="space") as app:
     btn.click(process, [upload_files, upload_folder, paths, method, force], plot)
 
 if __name__ == "__main__":
-    app.launch()
+    app.launch(allowed_paths=[cache.ROOT])
